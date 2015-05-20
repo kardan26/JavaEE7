@@ -6,6 +6,8 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
     <body>
+        <ui:composition template="./template.xhtml">
+            <ui:define name="content">
                 <form action="j_security_check" method="post">
                     <div class="panel panel-default col-sm-4 col-sm-offset-4" >
                         <div class="panel-heading ">
@@ -24,5 +26,8 @@
                         </div>
                     </div>
                 </form>
+            </ui:define>
+        </ui:composition>
+                
     </body>
 </html>
