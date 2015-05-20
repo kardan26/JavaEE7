@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://xmlns.jcp.org/jsf/passthrough">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <ui:composition template="./template.xhtml">
+            <ui:define name="content">
+                <h:form>
+                    <div class="panel panel-default col-sm-4 col-sm-offset-4" >
+                        <div class="panel-heading ">
+                            <div class="panel-title">Register</div>
+                        </div>
+                        <div class="panel-body">
+                            <div>
+                                <h:inputText id="username" value="#{userBean.user.userName}" p:placeholder="Username" class="form-control"/>
+                            </div>
+                            <div >
+                                <h:inputText id="password" value="#{userBean.user.password}" p:placeholder="Password" class="form-control"/>
+                            </div>
+                            <div >
+                                <h:inputSecret id="password2" value="#{userBean.password2}" p:placeholder="Retype Password" class="form-control"/>
+                            </div>
+                            <div >
+                                <h:commandButton id="registerUser" class="btn btn-primary" value="Zarejestruj" action="#{userBean.addUser}"/>
+                            </div>
+                        </div>
+                    </div>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </h:body>
+</html>
+

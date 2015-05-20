@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+    <body>
+                <form action="j_security_check" method="post">
+                    <div class="panel panel-default col-sm-4 col-sm-offset-4" >
+                        <div class="panel-heading ">
+                            <div class="panel-title">Login</div>
+                        </div>
+                        <div class="panel-body">
+                            <div>
+                                <input type="text" id="j_username" name="j_username"   placeholder="Username" class="form-control"/>
+                            </div>
+                            <div >
+                                <input type="password" id="j_password" name="j_password" placeholder="Password" class="form-control"/>
+                            </div>
+                            <div >
+                                <input type="submit" id="registerUser" class="btn btn-primary" value="Zaloguj" />
+                            </div>
+                        </div>
+                    </div>
+                </form>
+    </body>
+</html>

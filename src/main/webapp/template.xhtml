@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?> 
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <h:outputStylesheet name="./css/bootstrap.min.css"/>
+        <h:outputStylesheet name="./css/site.css"/>
+        <h:outputScript name="./js/bootstrap.min.js"/>
+        
+        <title>Facelets Template</title>
+    </h:head>
+    <h:body>
+        <nav class="navbar navbar-default">
+            <div class="container-fluid">
+                <div class="navbar-header">        
+                    <h:outputLink class="navbar-brand" value="index">CRM</h:outputLink>
+                </div>
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <ui:fragment rendered="#{request.userPrincipal ==null}">
+                            <li><h:outputLink id="login" value="login">Zaloguj</h:outputLink></li>
+                            <li><h:outputLink id="register" value="register">Zarejestruj</h:outputLink></li>
+                        </ui:fragment>
+                        <ui:fragment rendered="#{request.userPrincipal !=null}">
+                            <li><h:outputLink  value="#{request.contextPath}/admin/manage/#{request.userPrincipal.name}">#{request.userPrincipal.name}</h:outputLink></li>
+                            <li><h:form><h:commandLink action="/index?faces-redirect=true" actionListener="#{request.logout()}">Wyloguj</h:commandLink></h:form></li>
+                        </ui:fragment>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div id="content" class="center_content">
+            <ui:insert name="content">Content</ui:insert>
+        </div>
+    </h:body>
+</html>
