@@ -60,7 +60,7 @@ public class UserBean implements Serializable{
     
     @PostConstruct
     public void init(){
-        jpaController = new JpaController<>(em,utx); 
+        jpaController = (JpaController<User>) new JpaController<>(em,utx,User.class); 
     }
     public String addUser()
     {
@@ -76,7 +76,7 @@ public class UserBean implements Serializable{
     public List<User> getUsers()
     {       
          if(jpaController != null)
-             users = jpaController.findAll(User.class);
+             users = jpaController.findAll();
         return users;
     }
 
@@ -96,30 +96,7 @@ public class UserBean implements Serializable{
     public void setPassword2(String password2) {
         this.password2 = password2;
     }
-//    
-//    public void login(ActionEvent ev)
-//    {
-//        FacesContext context = FacesContext.getCurrentInstance();
-//        HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
-//        try {
-//            String navigateString = "";
-//            // Checks if username and password are valid if not throws a ServletException
-//            request.login(user.getUserName(), user.getPassword());
-//            // gets the user principle and navigates to the appropriate page
-//            Principal principal = request.getUserPrincipal();
-//            if (request.isUserInRole("admin")) {
-//                navigateString = "/admin/index";
-//            } 
-//            try {
-//                
-//                context.getExternalContext().redirect(request.getContextPath() + navigateString);
-//            } catch (IOException ex) {
-//                context.addMessage(null, new FacesMessage("Error!" + request.getUserPrincipal().toString(), "Exception occured"));
-//            }
-//        } catch (ServletException e) {
-//            context.addMessage(null, new FacesMessage("Error!" +  request.getUserPrincipal().toString(), "The username or password you provided does not match our records."));
-//        }
-//    }
+
     public void logout(ActionEvent actionEvent)
     {
         FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -132,9 +109,16 @@ public class UserBean implements Serializable{
         } catch (ServletException ex) {
             Logger.getLogger(UserBean.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-   
     }
+    public void update()
+    {
+        User temp = new User();
+        temp.setId(9);
+        temp.setUserName("dan");
+        temp.setPassword("noweHaso");
+        
+        jpaController.update(temp);
+    }
+    
    
 }

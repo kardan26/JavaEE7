@@ -37,7 +37,7 @@
         <auth-method>FORM</auth-method>
         <realm-name>crmJdbcRealm</realm-name>
         <form-login-config>
-            <form-login-page>/login.xhtml</form-login-page>
+            <form-login-page>/login</form-login-page>
             <form-error-page>/error.xhtml</form-error-page>
         </form-login-config>
     </login-config>

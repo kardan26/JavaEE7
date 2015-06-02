@@ -7,12 +7,8 @@ package pl.kardan.crm.db.entities;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -27,17 +23,13 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "\"TRole\"")
-@NamedQueries({
-    @NamedQuery(name = "Role.findAll", query = "SELECT r FROM Role r"),
-    @NamedQuery(name = "Role.findById", query = "SELECT r FROM Role r WHERE r.id = :id"),
-    @NamedQuery(name = "Role.findByRoleName", query = "SELECT r FROM Role r WHERE r.roleName = :roleName")})
-public class Role implements Serializable {
+//@NamedQueries({
+//    @NamedQuery(name = "Role.findAll", query = "SELECT r FROM Role r"),
+//    @NamedQuery(name = "Role.findById", query = "SELECT r FROM Role r WHERE r.id = :id"),
+//    @NamedQuery(name = "Role.findByRoleName", query = "SELECT r FROM Role r WHERE r.roleName = :roleName")})
+public class Role extends AbstractEntity implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
+
     @Size(max = 255)
     @Column(name = "roleName")
     private String roleName;
@@ -51,24 +43,16 @@ public class Role implements Serializable {
     }
 
     public Role(Integer id, String roleName) {
-        this.id = id;
+        this.Id = id;
         this.roleName = roleName;
         
     }
 
     
     public Role(Integer id) {
-        this.id = id;
+        this.Id = id;
     }
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
+   
     public String getRoleName() {
         return roleName;
     }
@@ -88,7 +72,7 @@ public class Role implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (Id != null ? Id.hashCode() : 0);
         return hash;
     }
 
@@ -99,7 +83,7 @@ public class Role implements Serializable {
             return false;
         }
         Role other = (Role) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.Id == null && other.Id != null) || (this.Id != null && !this.Id.equals(other.Id))) {
             return false;
         }
         return true;
@@ -107,7 +91,7 @@ public class Role implements Serializable {
 
     @Override
     public String toString() {
-        return "pl.kardan.crm.db.entities.Role[ id=" + id + " ]";
+        return "pl.kardan.crm.db.entities.Role[ id=" + Id + " ]";
     }
     
 }

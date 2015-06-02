@@ -7,12 +7,8 @@ package pl.kardan.crm.db.entities;
 
 import java.io.Serializable;
 import java.util.Collection;
-import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -25,18 +21,13 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "\"TUser\"")
-@NamedQueries({
-    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
-    @NamedQuery(name = "User.findById", query = "SELECT u FROM User u WHERE u.id = :id"),
-    @NamedQuery(name = "User.findByUserName", query = "SELECT u FROM User u WHERE u.userName = :userName"),
-    @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")})
-public class User implements Serializable {
+//@NamedQueries({
+//    @NamedQuery(name = "User.findAll", query = "SELECT u FROM User u"),
+//    @NamedQuery(name = "User.findById", query = "SELECT u FROM User  WHERE u.id = :id"),
+//    @NamedQuery(name = "User.findByUserName", query = "SELECT u FROM User u WHERE u.userName = :userName"),
+//    @NamedQuery(name = "User.findByPassword", query = "SELECT u FROM User u WHERE u.password = :password")})
+public class User extends AbstractEntity implements Serializable {
     private static final long serialVersionUID = 1L;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "id")
-    private Integer id;
     @Size(max = 2147483647)
     @Column(name = "userName")
     private String userName;
@@ -50,15 +41,15 @@ public class User implements Serializable {
     }
 
     public User(Integer id) {
-        this.id = id;
+        this.Id = id;
     }
 
     public Integer getId() {
-        return id;
+        return Id;
     }
 
     public void setId(Integer id) {
-        this.id = id;
+        this.Id = id;
     }
 
     public String getUserName() {
@@ -88,7 +79,7 @@ public class User implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (id != null ? id.hashCode() : 0);
+        hash += (Id != null ? Id.hashCode() : 0);
         return hash;
     }
 
@@ -99,7 +90,7 @@ public class User implements Serializable {
             return false;
         }
         User other = (User) object;
-        if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
+        if ((this.Id == null && other.Id != null) || (this.Id != null && !this.Id.equals(other.Id))) {
             return false;
         }
         return true;
@@ -107,7 +98,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "pl.kardan.crm.db.entities.User[ id=" + id + " ]";
+        return "pl.kardan.crm.db.entities.User[ id=" + Id + " ]";
     }
     
 }

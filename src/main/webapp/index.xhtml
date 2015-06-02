@@ -18,10 +18,15 @@
                             <span>
                                 <ui:repeat value="#{user.roleCollection}" var="role">
                                     #{role.roleName};
-                                </ui:repeat>
+                                 </ui:repeat>
                             </span>
                         </li>
                     </ui:repeat>
+                    <h:form>
+                        <h:commandButton action="#{userBean.update}"/>
+                    </h:form>
+                    
+                    
                 </ul>
             </ui:define>
         </ui:composition>
